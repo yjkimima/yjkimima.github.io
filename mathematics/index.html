@@ -411,7 +411,7 @@
   <header>
     <div class="nav-wrap">
       <div class="brand">
-        <a href="../index.html"> <img src="/assets/images/LongLogo.png" alt="25 Lectures 로고"></a>
+        <a href="../index.html"> <img src="../assets/images/dotcomlogo.png" alt="25 Lectures 로고"></a>
       </div>
       <nav class="nav">
         <a href="../about/index.html">소개</a>
@@ -475,7 +475,7 @@
       <article class="book-panel active" id="book1">
         <div class="top-detail">
           <div class="cover-box">
-            <img src="/assets/images/cover1.png" alt="Single Variable Calculus 표지">
+            <img src="../assets/images/cover1.png" alt="Single Variable Calculus 표지">
           </div>
 
           <div class="book-head">
@@ -511,7 +511,7 @@
             <div class="links">
               <a class="button" href="https://product.kyobobook.co.kr/detail/S000219311363" target="_blank" rel="noopener noreferrer">구매 링크 (교보문고)</a>
               <a class="button" href="https://www.kyungmoon.com/shop/item.php?it_id=1771822190" target="_blank" rel="noopener noreferrer">구매 링크 (경문사)</a>
-              <a class="button secondary" href="/assets/pdf/MathPDF001.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
+              <a class="button secondary" href="../assets/pdf/MathPDF001.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
             </div>
           </div>
         </div>
@@ -557,7 +557,7 @@
       <article class="book-panel" id="book2">
         <div class="top-detail">
           <div class="cover-box">
-            <img src="/assets/images/cover2.png" alt="Multivariable Calculus 표지">
+            <img src="../assets/images/cover2.png" alt="Multivariable Calculus 표지">
           </div>
 
           <div class="book-head">
@@ -592,7 +592,7 @@
 
             <div class="links">
               <a class="button" href="#" target="_blank" rel="noopener noreferrer">구매 링크</a>
-              <a class="button secondary" href="/assets/pdf/MathPDF002.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
+              <a class="button secondary" href="../assets/pdf/book2-sample.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
             </div>
           </div>
         </div>
@@ -659,21 +659,47 @@
     </div>
   </footer>
 
-  <script>
-    const buttons = document.querySelectorAll('.book-item');
-    const panels = document.querySelectorAll('.book-panel');
+<script>
+function showBook(bookId) {
+  // 버튼 active 제거
+  document.querySelectorAll(".book-item").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const target = button.getAttribute('data-book');
+  // 모든 책 내용 숨기기
+  document.querySelectorAll(".book-content").forEach(c => {
+    c.style.display = "none";
+  });
 
-        buttons.forEach(btn => btn.classList.remove('active'));
-        panels.forEach(panel => panel.classList.remove('active'));
+  // 선택된 버튼 active
+  const activeBtn = document.querySelector(`[data-book="${bookId}"]`);
+  if (activeBtn) activeBtn.classList.add("active");
 
-        button.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
+  // 선택된 책 내용 보이기
+  const activeContent = document.getElementById(bookId);
+  if (activeContent) activeContent.style.display = "block";
+
+  // URL hash 변경
+  window.location.hash = bookId;
+}
+
+// 버튼 클릭 이벤트
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".book-item").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const bookId = this.getAttribute("data-book");
+      showBook(bookId);
     });
-  </script>
+  });
+
+  // 페이지 처음 열릴 때
+  const hash = window.location.hash.replace("#", "");
+  if (hash) {
+    showBook(hash);
+  } else {
+    showBook("book1"); // 기본 선택 책
+  }
+});
+</script>
 </body>
 </html> 
