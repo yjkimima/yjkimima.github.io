@@ -5,27 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>대학수학 | 25 Lectures</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       background: #f7f7f7;
       color: #222;
       line-height: 1.7;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     header {
       position: sticky;
@@ -35,7 +24,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #e8e8e8;
     }
-
     .nav-wrap {
       max-width: 1280px;
       margin: 0 auto;
@@ -45,22 +33,7 @@
       align-items: center;
       gap: 20px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      white-space: nowrap;
-    }
-
-    .brand img {
-      height: 40px;
-      width: auto;
-    }
-
+    .brand img { height: 40px; width: auto; }
     .nav {
       display: flex;
       flex-wrap: wrap;
@@ -68,23 +41,18 @@
       font-size: 15px;
       color: #555;
     }
-
-    .nav a:hover {
-      color: #000;
-    }
+    .nav a:hover { color: #000; }
 
     .page-header {
       max-width: 1280px;
       margin: 0 auto;
       padding: 46px 24px 24px;
     }
-
     .page-header h1 {
       margin: 0 0 10px;
       font-size: 42px;
       letter-spacing: -0.8px;
     }
-
     .page-header p {
       margin: 0;
       color: #666;
@@ -103,7 +71,7 @@
     }
 
     .sidebar,
-    .content {
+    .content-shell {
       background: #fff;
       border: 1px solid #e8e8e8;
       border-radius: 20px;
@@ -114,21 +82,13 @@
       position: sticky;
       top: 86px;
     }
-
     .sidebar h2 {
       margin: 0 0 14px;
       font-size: 22px;
       letter-spacing: -0.3px;
     }
-
-    .sidebar-section {
-      margin-bottom: 26px;
-    }
-
-    .sidebar-section:last-child {
-      margin-bottom: 0;
-    }
-
+    .sidebar-section { margin-bottom: 26px; }
+    .sidebar-section:last-child { margin-bottom: 0; }
     .sidebar-section-title {
       margin: 0 0 12px;
       font-size: 14px;
@@ -143,7 +103,6 @@
       flex-direction: column;
       gap: 12px;
     }
-
     .book-item {
       width: 100%;
       text-align: left;
@@ -156,25 +115,15 @@
       font: inherit;
       color: inherit;
     }
-
     .book-item:hover {
       background: #f2f4f8;
       border-color: #cfd6e0;
     }
-
     .book-item.active {
       background: #1f2d3d;
       color: #fff;
       border-color: #1f2d3d;
     }
-
-    .book-item .num {
-      font-size: 12px;
-      opacity: 0.82;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-    }
-
     .book-item .title {
       font-size: 19px;
       font-weight: 800;
@@ -182,185 +131,28 @@
       margin-bottom: 4px;
       letter-spacing: -0.2px;
     }
-
     .book-item .meta {
       font-size: 13px;
       opacity: 0.82;
     }
 
-    .content {
-      padding: 30px;
-    }
-
-    .book-panel {
-      display: none;
-    }
-
-    .book-panel.active {
-      display: block;
-    }
-
-    .top-detail {
-      display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      gap: 30px;
-      align-items: start;
-    }
-
-    .cover-box {
-      background: #f3f3f3;
-      border: 1px solid #e6e6e6;
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .cover-box img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.14);
-    }
-
-    .book-head .series {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 8px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .book-head h2 {
-      margin: 0 0 8px;
-      font-size: 40px;
-      line-height: 1.15;
-      letter-spacing: -0.8px;
-    }
-
-    .book-head .subtitle {
-      font-size: 17px;
-      color: #666;
-      margin-bottom: 18px;
-    }
-
-    .book-head .number {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #eef4ff;
-      color: #2f5da8;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(180px, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .info-card {
-      background: #fafafa;
-      border: 1px solid #ececec;
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-
-    .info-card .label {
-      font-size: 12px;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .info-card .value {
-      font-size: 15px;
-      font-weight: 700;
-      color: #222;
-      word-break: keep-all;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1px solid #1f2d3d;
-      background: #1f2d3d;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .button.secondary {
+    .content-shell {
+      overflow: hidden;
+      min-height: 980px;
       background: #fff;
-      color: #1f2d3d;
     }
-
-    .section {
-      margin-top: 34px;
-      padding-top: 28px;
-      border-top: 1px solid #ececec;
-    }
-
-    .section h3 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      letter-spacing: -0.4px;
-    }
-
-    .section p {
-      margin: 0 0 14px;
-      color: #444;
-      font-size: 16px;
-    }
-
-    .quote-box {
-      background: #fbfcfe;
-      border: 1px solid #e2e8f2;
-      border-left: 4px solid #4a79c9;
-      border-radius: 14px;
-      padding: 18px 20px;
-      color: #38465a;
-    }
-
-    .extra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .extra-card {
-      background: #fafafa;
-      border: 1px solid #ececec;
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .extra-card h4 {
-      margin: 0 0 8px;
-      font-size: 17px;
-    }
-
-    .extra-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
+    #book-frame {
+      display: block;
+      width: 100%;
+      min-height: 1600px;
+      border: none;
+      background: #fff;
     }
 
     footer {
       background: #fff;
       border-top: 1px solid #e8e8e8;
     }
-
     .footer-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -370,25 +162,9 @@
     }
 
     @media (max-width: 980px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-
-      .top-detail {
-        grid-template-columns: 1fr;
-      }
-
-      .cover-box {
-        max-width: 360px;
-      }
-
-      .book-head h2 {
-        font-size: 32px;
-      }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      #book-frame, .content-shell { min-height: 720px; }
     }
 
     @media (max-width: 680px) {
@@ -396,14 +172,7 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .page-header h1 {
-        font-size: 34px;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
+      .page-header h1 { font-size: 34px; }
     }
   </style>
 </head>
@@ -411,7 +180,7 @@
   <header>
     <div class="nav-wrap">
       <div class="brand">
-        <a href="../index.html"> <img src="../assets/images/dotcomlogo.png" alt="25 Lectures 로고"></a>
+        <a href="../index.html"><img src="../assets/images/LongLogo.png" alt="25 Lectures 로고"></a>
       </div>
       <nav class="nav">
         <a href="../about/index.html">소개</a>
@@ -429,9 +198,7 @@
 
   <section class="page-header">
     <h1>대학수학</h1>
-    <p>
-      25 Lectures for Undergraduate Mathematics 시리즈 교재를 소개한다.
-    </p>
+    <p>25 Lectures for Undergraduate Mathematics 시리즈 교재를 소개한다.</p>
   </section>
 
   <main class="layout">
@@ -443,12 +210,12 @@
       <div class="sidebar-section">
         <div class="sidebar-section-title">출판된 교재</div>
         <div class="book-list">
-          <button class="book-item active" data-book="book1">
+          <button class="book-item active" data-file="math001.html">
             <div class="title">#1. Single Variable Calculus</div>
             <div class="meta">출판됨 · 경문사</div>
           </button>
 
-          <button class="book-item" data-book="book2">
+          <button class="book-item" data-file="math002.html">
             <div class="title">#2. Multivariable Calculus</div>
             <div class="meta">출판됨 · 경문사</div>
           </button>
@@ -458,12 +225,12 @@
       <div class="sidebar-section">
         <div class="sidebar-section-title">출판 예정 교재</div>
         <div class="book-list">
-          <button class="book-item" data-book="coming1">
+          <button class="book-item" data-file="math003.html">
             <div class="title">#3. AI and Mathematical Modeling</div>
             <div class="meta">출판 예정</div>
           </button>
 
-          <button class="book-item" data-book="coming2">
+          <button class="book-item" data-file="math004.html">
             <div class="title">#4. Introduction to PDE</div>
             <div class="meta">출판 예정</div>
           </button>
@@ -471,236 +238,55 @@
       </div>
     </aside>
 
-    <section class="content">
-      <article class="book-panel active" id="book1">
-        <div class="top-detail">
-          <div class="cover-box">
-            <img src="../assets/images/cover1.png" alt="Single Variable Calculus 표지">
-          </div>
-
-          <div class="book-head">
-            <h2>Single Variable Calculus</h2>
-
-            <div class="info-grid">
-              <div class="info-card">
-                <div class="label">Pages</div>
-                <div class="value">344 pages</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Price</div>
-                <div class="value">₩26,000</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Publisher</div>
-                <div class="value">경문사</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Publication Date</div>
-                <div class="value">2026-02-20</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Edition</div>
-                <div class="value">1st Edition</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Sample PDF</div>
-                <div class="value">Lecture 2까지 포함</div>
-              </div>
-            </div>
-
-            <div class="links">
-              <a class="button" href="https://product.kyobobook.co.kr/detail/S000219311363" target="_blank" rel="noopener noreferrer">구매 링크 (교보문고)</a>
-              <a class="button" href="https://www.kyungmoon.com/shop/item.php?it_id=1771822190" target="_blank" rel="noopener noreferrer">구매 링크 (경문사)</a>
-              <a class="button secondary" href="../assets/pdf/MathPDF001.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-
-         <h3>간단한 소개</h3>
-              <p>
-이 책은 두 학기에 걸쳐 진행되는 미적분학 과목의 첫 학기 교재이다. 이 책에서는 일변수 함수의 미적분학을 다루며, 실수 값 함수와 벡터 값 함수를 함께 소개한다. 극한, 미분, 적분, 관성 좌표계, 극좌표계, 변수 변환, 미분 방정식, 수열과 급수를 다룬다.
-              </p>
-
-          <h3>서문에서</h3>
-          <div class="quote-box">
-미적분학은 수학이다. 그러나 그 본질은 수학에 있지 않고 과학에 있다. 미적분학은 과학을 다루는 언어이며, 그 언어는 여러 가지 수학적 개념으로 이루어져 있고, 그 개념들은 과학적 현상을 분석하기 위해 만들어졌다. 이것이 미적분학이 이공계 학생들에게 졸업에 필요한 필수 과목인 이유이며, 경제학을 포함한 많은 인문계열 학생들에게도 꼭 필요한 필수 과목인 이유이다. 따라서 미적분학 교육의 핵심은 그 개념을 이해하고, 그 개념을 사용하며, 그 개념으로 각자의 문제를 분석하는 능력을 기르는 데 있다.<BR><BR>
-
-미적분학 1(Single Variable Calculus)에서는 일변수 함수를 다룬다. 어떤 사람들에게는 이 미적분학 책에 과학이 많이 들어와 있어서 당혹스러울 수도 있을 것이다. 그러나 수학적인 부분과 과학적인 부분을 나누어 학습하면 미적분학의 과학의 언어로서의 기능은 약화된다. 뉴턴이 케플러 법칙을 수학적으로 설명하기 위하여 만든 도구가 미적분학의 시작이 되었고, 그것이 이 책 전반부의 핵심 주제이다. 극한, 미분, 적분, 관성 좌표계, 극좌표계, 변수 변환, 미분 방정식은 이 과학적 목표를 달성하기 위한 수학적 요소들이다. 미적분학은 뉴턴 이후에도 많은 발전을 이루어 왔다. 이 책의 후반부에서는 미분과 적분의 기법을 학습한 후, 수열과 급수를 이용한 근사 방법을 다룬다. 특히 공학에서 널리 사용되는 근사 기법의 기초가 되는 Taylor 급수와 다항식 근사를 학습한다.<BR><BR>
-
-언어는 소통의 수단인 동시에 사고의 수단이다. 인간이 깊이 있는 생각을 할 수 있는 것은 언어가 있기 때문이다. 미적분학은 과학을 깊이 있게 생각하는 데 쓰이는 언어이다. 그러나 외국어 단어를 많이 알고 있다고 해도 정작 그 언어로 말을 하나도 못 할 수도 있듯이, 미적분 개념도 충분한 연습을 통하지 않고서는 사고의 수단으로 사용할 수 없다. 책의 설명을 이해하려는 노력도 좋은 연습이지만, 스스로 익힌 개념으로 질문하고 답하려는 과정은 더 좋은 연습이 된다. 이 책에서는 학생들이 주도적으로 생각할 수 있도록 적절한 질문을 제시하려고 노력하였다. 때로는 구체적인 설명보다 힌트와 동기를 부여하는 질문이 더 효과적일 수 있기 때문이다.<BR><BR>
-
-질문은 학습을 이끄는 원동력이자 창의적 사고의 출발점이다. 이 책에 담긴 질문과 문제들에 대해 생각하고 답을 찾아가는 과정 속에서 학생들이 미적분학을 더욱 깊이 이해할 수 있기를 바란다.
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>추가 정보</h3>
-          <div class="extra-grid">
-            <div class="extra-card">
-              <h4>주요 독자</h4>
-              <p>대학 1학년 미적분학 수강생, 공학 및 자연과학 계열 학생.</p>
-            </div>
-            <div class="extra-card">
-              <h4>강의 구성</h4>
-              <p>75분 수업 25회에 맞춘 강의 흐름으로 구성.</p>
-            </div>
-            <div class="extra-card">
-              <h4>관련 자료</h4>
-              <p>추후 강의자료, 정오표, 보충 설명 자료를 연동할 수 있음.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="book-panel" id="book2">
-        <div class="top-detail">
-          <div class="cover-box">
-            <img src="../assets/images/cover2.png" alt="Multivariable Calculus 표지">
-          </div>
-
-          <div class="book-head">
-            <h2>Multivariable Calculus</h2>
-
-            <div class="info-grid">
-              <div class="info-card">
-                <div class="label">Pages</div>
-                <div class="value">468 pages</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Price</div>
-                <div class="value">₩34,000</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Publisher</div>
-                <div class="value">경문사</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Publication Date</div>
-                <div class="value">2026-08-15</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Edition</div>
-                <div class="value">1st Edition</div>
-              </div>
-              <div class="info-card">
-                <div class="label">Sample PDF</div>
-                <div class="value">Lecture 2까지 포함</div>
-              </div>
-            </div>
-
-            <div class="links">
-              <a class="button" href="#" target="_blank" rel="noopener noreferrer">구매 링크</a>
-              <a class="button secondary" href="../assets/pdf/book2-sample.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF 다운로드</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-         <h3>간단한 소개</h3>
-              <p>
-              일변수 미적분학에 이어지는 두 번째 미적분학 교재
-                이 책은 다변수 함수의 미적분학을 다루는 두 번째 책으로, 편미분, 중적분,
-                선적분과 면적분, 벡터미적분의 기본 개념을 체계적으로 소개한다.
-                기하적 직관과 물리적 의미를 함께 강조하여 후속 과목과의 연결을 돕는다.
-              </p>
-          <h3>서문에서</h3>
-          <div class="quote-box">
-            다변수 미적분학은 계산 규칙의 확장이 아니라, 공간과 변화에 대한 새로운 시각을 배우는 과정이다.
-            이 책은 그 구조를 학생들이 자연스럽게 받아들일 수 있도록 강의 흐름에 맞추어 구성되었다.
-          </div>
-        </div>
-
-        <div class="section">
-          <h3>추가 정보</h3>
-          <div class="extra-grid">
-            <div class="extra-card">
-              <h4>주요 독자</h4>
-              <p>미적분학 I 이수 후 다변수 미적분학을 배우는 학부생.</p>
-            </div>
-            <div class="extra-card">
-              <h4>핵심 주제</h4>
-              <p>편미분, 중적분, 좌표변환, 벡터장, Green/Stokes/Gauss 정리.</p>
-            </div>
-            <div class="extra-card">
-              <h4>연계 과목</h4>
-              <p>선형대수학, 미분방정식, 물리학, 수리모델링과 자연스럽게 연결.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="book-panel" id="coming1">
-        <div class="section" style="margin-top:0; padding-top:0; border-top:none;">
-          <h3>Linear Algebra</h3>
-          <p>
-            이 책은 현재 준비 중인 교재이다. 벡터공간, 선형사상, 행렬, 고유값 문제를 중심으로
-            학부 수준의 선형대수학을 25개의 강의로 구성할 예정이다.
-          </p>
-        </div>
-      </article>
-
-      <article class="book-panel" id="coming2">
-        <div class="section" style="margin-top:0; padding-top:0; border-top:none;">
-          <h3>Differential Equations</h3>
-          <p>
-            이 책은 현재 준비 중인 교재이다. 상미분방정식의 기본 해법과 모델링, 안정성, 위상평면 해석을
-            학부 교육 흐름에 맞추어 소개할 예정이다.
-          </p>
-        </div>
-      </article>
+    <section class="content-shell">
+      <iframe id="book-frame" src="math001.html" title="교재 상세"></iframe>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner">
-      © 2026 25 Lectures Series. All rights reserved.
-    </div>
+    <div class="footer-inner">© 2026 25 Lectures Series. All rights reserved.</div>
   </footer>
-  <script>
-    const buttons = document.querySelectorAll('.book-item');
-    const panels = document.querySelectorAll('.book-panel');
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const target = button.getAttribute('data-book');
-
-        buttons.forEach(btn => btn.classList.remove('active'));
-        panels.forEach(panel => panel.classList.remove('active'));
-
-        button.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-  </script>
-  <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const hash = window.location.hash;
-  if (hash) {
-    const target = hash.replace("#", "");
-
-    document.querySelectorAll(".book-item").forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-    const activeBtn = document.querySelector(`[data-book="${target}"]`);
-    if (activeBtn) {
-      activeBtn.classList.add("active");
-      showBook(target);
-    }
-  }
-});
-</script>
 <script>
-function showBook(bookId) {
-  document.querySelectorAll(".book-content").forEach(c => {
-    c.style.display = "none";
-  });
+    function setActiveButton(fileName) {
+      document.querySelectorAll('.book-item').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.file === fileName);
+      });
+    }
 
-  document.getElementById(bookId).style.display = "block";
+    function loadBook(fileName, pushHash = true) {
+      const frame = document.getElementById('book-frame');
+      frame.src = fileName;
+      setActiveButton(fileName);
+      if (pushHash) {
+        window.location.hash = fileName.replace('.html', '');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.book-item');
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          loadBook(this.dataset.file);
+        });
+      });
+
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        const fileName = `${hash}.html`;
+        const matched = document.querySelector(`.book-item[data-file="${fileName}"]`);
+        if (matched) loadBook(fileName, false);
+      }
+    });
+
+function resizeIframe() {
+  const iframe = document.getElementById("book-frame");
+  iframe.style.height =
+    iframe.contentWindow.document.body.scrollHeight + "px";
 }
-</script>
 
+document.getElementById("book-frame").addEventListener("load", resizeIframe);
+
+  </script>
 </body>
-</html> 
+</html>
