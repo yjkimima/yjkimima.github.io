@@ -658,48 +658,49 @@
       © 2026 25 Lectures Series. All rights reserved.
     </div>
   </footer>
+  <script>
+    const buttons = document.querySelectorAll('.book-item');
+    const panels = document.querySelectorAll('.book-panel');
 
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-book');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const hash = window.location.hash;
+  if (hash) {
+    const target = hash.replace("#", "");
+
+    document.querySelectorAll(".book-item").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    const activeBtn = document.querySelector(`[data-book="${target}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add("active");
+      showBook(target);
+    }
+  }
+});
+</script>
 <script>
 function showBook(bookId) {
-  // 버튼 active 제거
-  document.querySelectorAll(".book-item").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  // 모든 책 내용 숨기기
   document.querySelectorAll(".book-content").forEach(c => {
     c.style.display = "none";
   });
 
-  // 선택된 버튼 active
-  const activeBtn = document.querySelector(`[data-book="${bookId}"]`);
-  if (activeBtn) activeBtn.classList.add("active");
-
-  // 선택된 책 내용 보이기
-  const activeContent = document.getElementById(bookId);
-  if (activeContent) activeContent.style.display = "block";
-
-  // URL hash 변경
-  window.location.hash = bookId;
+  document.getElementById(bookId).style.display = "block";
 }
-
-// 버튼 클릭 이벤트
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll(".book-item").forEach(btn => {
-    btn.addEventListener("click", function() {
-      const bookId = this.getAttribute("data-book");
-      showBook(bookId);
-    });
-  });
-
-  // 페이지 처음 열릴 때
-  const hash = window.location.hash.replace("#", "");
-  if (hash) {
-    showBook(hash);
-  } else {
-    showBook("book1"); // 기본 선택 책
-  }
-});
 </script>
+
 </body>
 </html> 
