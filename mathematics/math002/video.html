@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Variable Calculus | Lecture Videos</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #1f2937;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .video-outer {
+      width: 100%;
+    }
+
+    .video-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px 20px 42px;
+    }
+
+    .page-header {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .header-cover {
+      background: #f5f5f5;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 10px;
+    }
+
+    .header-cover img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .page-header h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      color: #111827;
+    }
+
+    .page-header p {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid #20324a;
+      background: #20324a;
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: #20324a;
+    }
+
+    .intro-box {
+      margin-bottom: 28px;
+      background: #fbfcfe;
+      border: 1px solid #dbe3f0;
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+
+    .intro-box h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #111827;
+    }
+
+    .intro-box p {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    .intro-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-list-title {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: #111827;
+      letter-spacing: -0.03em;
+    }
+
+    .video-section {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+
+    .section-toggle {
+      width: 100%;
+      border: none;
+      background: #fff;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      font: inherit;
+    }
+
+    .section-toggle:hover {
+      background: #f9fafb;
+    }
+
+    .section-main {
+      min-width: 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #111827;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .section-arrow {
+      font-size: 24px;
+      color: #64748b;
+      transition: transform 0.18s ease;
+    }
+
+    .video-section.open .section-arrow {
+      transform: rotate(90deg);
+    }
+
+    .section-content {
+      display: none;
+      border-top: 1px solid #e5e7eb;
+      background: #fcfcfd;
+      padding: 18px 20px 20px;
+    }
+
+    .video-section.open .section-content {
+      display: block;
+    }
+
+    .section-video-box {
+      margin-bottom: 16px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .video-placeholder {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 12px;
+      border: 1px dashed #c7d2de;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .section-video-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .lecture-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .lecture-item {
+      display: block;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 15px 16px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .lecture-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .lecture-no {
+      font-size: 12px;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .lecture-item h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #111827;
+      letter-spacing: -0.02em;
+    }
+
+    .lecture-item p {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .lecture-meta {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    @media (max-width: 760px) {
+      .video-inner {
+        padding: 20px 16px 34px;
+      }
+
+      .page-header {
+        grid-template-columns: 1fr;
+      }
+
+      .header-cover {
+        max-width: 190px;
+      }
+
+      .page-header h1 {
+        font-size: 29px;
+      }
+
+      .section-title {
+        font-size: 19px;
+      }
+
+      .section-toggle {
+        padding: 16px;
+      }
+
+      .section-content {
+        padding: 16px;
+      }
+    }
+
+.clip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.clip-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.embedded-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #dbe3ea;
+  background: #f8fafc;
+}
+
+.embedded-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.lecture-meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+}
+  </style>
+</head>
+<body>
+  <div class="video-outer">
+    <div class="video-inner">
+
+      <header class="page-header">
+        <div class="header-cover">
+          <img src="bookcover.png" alt="Single Variable Calculus 표지">
+        </div>
+
+        <div class="header-text">
+          <div class="eyebrow">25 Lectures · Lecture Videos</div>
+          <h1>Single Variable Calculus 강의동영상</h1>
+          <p>
+            <em>25 Lectures for Undergraduate Mathematics: Single Variable Calculus</em>를
+            바탕으로 구성한 강의 동영상 페이지이다. 교재의 큰 흐름에 따라 Part와 Section별로
+            강의를 나누어 정리하였다.
+          </p>
+          <p>
+            아래의 각 섹션을 클릭하면 해당 부분의 강의 목록을 볼 수 있다.
+          </p>
+        </div>
+      </header>
+
+      <section class="intro-box">
+        <h2>강의 구성</h2>
+        <p>
+          이 교재의 contents를 기준으로 강의 영상 페이지를 구성하였다.
+          각 큰 chapter는 하나의 주요 섹션으로 보고, 그 아래 subsection들은 해당 강의의 세부 주제로 둔다.
+        </p>
+        <p>
+          지금은 우선 섹션별 구조를 만들고, 이후 각 lecture 카드에 실제 YouTube 링크나 개별 강의 페이지를 연결하면 된다.
+        </p>
+      </section>
+
+      <h2 class="section-list-title">섹션별 강의 목록</h2>
+
+      <div class="video-section open">
+        <button class="section-toggle" type="button">
+          <div class="section-main">
+            <div class="section-label">Part I</div>
+            <div class="section-title">Differentiation: Mathematical Description of Motion</div>
+            <div class="section-desc">Chapter 1–7 · 극한, 연속, 미분, 적분, 역함수, 로그와 지수</div>
+          </div>
+          <div class="section-arrow">›</div>
+        </button>
+
+        <div class="section-content">
+          <div class="section-video-box">
+            <div class="video-placeholder">
+              Part I 대표 영상 자리
+            </div>
+            <p>이 부분에는 Part I 전체를 소개하는 대표 강의 영상 또는 개요 영상을 넣을 수 있다.</p>
+          </div>
+
+          <div class="lecture-list">
+<a class="lecture-item" href="javascript:void(0);">
+<div class="lecture-item">
+  <div class="lecture-no">Section 1</div>
+  <h3>Limit and Continuity #1 (with Common Language)</h3>
+  <p>Common language definitions와 ε–δ 논의를 준비하는 첫 강의.</p>
+
+  <div class="clip-grid">
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.1</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #1"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.2</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #2"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.3</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #3"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 2</div>
+              <h3>Limit and Continuity #2 (with ε–δ argument)</h3>
+              <p>엄밀한 극한 정의와 ε–δ 논법을 다룬다.</p>
+              <div class="lecture-meta">Lecture 3–4 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 3</div>
+              <h3>Differentiation</h3>
+              <p>증가율, 미분 규칙, 평균값 정리까지의 흐름을 정리한다.</p>
+              <div class="lecture-meta">Lecture 5–7 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 4</div>
+              <h3>Chain Rule and Variable-Centered Notation</h3>
+              <p>Chain rule과 variable-centered notation을 도입한다.</p>
+              <div class="lecture-meta">Lecture 8 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 5</div>
+              <h3>Integration & Fundamental Theorem of Calculus</h3>
+              <p>적분과 미적분학의 기본정리를 다룬다.</p>
+              <div class="lecture-meta">Lecture 9–10 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 6–7</div>
+              <h3>Inverse Functions, Logarithm, Exponential, Implicit Differentiation</h3>
+              <p>역함수, 지수·로그 함수, 음함수 미분까지 연결한다.</p>
+              <div class="lecture-meta">Lecture 11–13 · 영상 준비 중</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <button class="section-toggle" type="button">
+          <div class="section-main">
+            <div class="section-label">Part II</div>
+            <div class="section-title">Kepler and Newton’s Laws of Motion</div>
+            <div class="section-desc">Chapter 8–14 · 좌표계, 벡터, 극좌표, 미분방정식, 뉴턴·케플러 법칙</div>
+          </div>
+          <div class="section-arrow">›</div>
+        </button>
+
+        <div class="section-content">
+          <div class="section-video-box">
+            <div class="video-placeholder">
+              Part II 대표 영상 자리
+            </div>
+            <p>물리적 동기와 수학적 모델링이 만나는 부분을 소개하는 영상 자리.</p>
+          </div>
+
+          <div class="lecture-list">
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 8</div>
+              <h3>Rectangular Coordinate System and Curves in ℝ³</h3>
+              <p>투영, 벡터공간, 내적, 외적까지 좌표계의 기초를 다룬다.</p>
+              <div class="lecture-meta">Lecture 14–16 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 9</div>
+              <h3>Polar Coordinates in ℝ²</h3>
+              <p>극좌표와 운동의 표현, 타원의 극좌표 표현을 소개한다.</p>
+              <div class="lecture-meta">Lecture 17–18 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 10–11</div>
+              <h3>First and Second Order Differential Equations</h3>
+              <p>1계 및 2계 미분방정식의 기본 형태와 해법을 다룬다.</p>
+              <div class="lecture-meta">Lecture 19–21 · 영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 12–14</div>
+              <h3>Newton’s Law and Kepler’s Law</h3>
+              <p>중력, 포물선 운동, 두 몸 문제, 케플러 법칙까지의 흐름.</p>
+              <div class="lecture-meta">Lecture 22–25 · 영상 준비 중</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <button class="section-toggle" type="button">
+          <div class="section-main">
+            <div class="section-label">Part III</div>
+            <div class="section-title">The Arts of Calculus</div>
+            <div class="section-desc">Chapter 15–20 · 곡선, 선형화, 역삼각함수, 로피탈, 치환적분, 유리함수</div>
+          </div>
+          <div class="section-arrow">›</div>
+        </button>
+
+        <div class="section-content">
+          <div class="section-video-box">
+            <div class="video-placeholder">
+              Part III 대표 영상 자리
+            </div>
+            <p>계산 기법과 함수 해석의 기술을 묶어서 정리하는 영상 자리.</p>
+          </div>
+
+          <div class="lecture-list">
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 15–16</div>
+              <h3>Curves, Particle Trajectories, and Linearization</h3>
+              <p>곡선의 기하와 선형화, differential의 의미를 연결한다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 17–18</div>
+              <h3>Inverse Trigonometric Functions and L’Hôpital’s Rule</h3>
+              <p>역삼각함수, 쌍곡함수, 로피탈의 정리를 다룬다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 19–20</div>
+              <h3>Integration by Substitution, by Parts, and Rational Functions</h3>
+              <p>적분기법과 improper integration의 기초를 정리한다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <button class="section-toggle" type="button">
+          <div class="section-main">
+            <div class="section-label">Part IV</div>
+            <div class="section-title">Approximation Techniques and Series</div>
+            <div class="section-desc">Chapter 21–25 · 수치적분, 수열과 급수, 수렴 판정, Taylor series</div>
+          </div>
+          <div class="section-arrow">›</div>
+        </button>
+
+        <div class="section-content">
+          <div class="section-video-box">
+            <div class="video-placeholder">
+              Part IV 대표 영상 자리
+            </div>
+            <p>근사, 급수, Taylor 전개를 중심으로 한 후반부 개요 영상 자리.</p>
+          </div>
+
+          <div class="lecture-list">
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 21</div>
+              <h3>Numerical Integration</h3>
+              <p>Riemann sum, convergence order, Gauss–Legendre quadrature를 소개한다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 22–24</div>
+              <h3>Sequences, Series, and Tests for Convergence</h3>
+              <p>수열과 급수, 각종 수렴 판정법, power series를 다룬다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 25</div>
+              <h3>Taylor Series</h3>
+              <p>Taylor series와 응용, 근사의 관점을 정리한다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <button class="section-toggle" type="button">
+          <div class="section-main">
+            <div class="section-label">Part V</div>
+            <div class="section-title">Appendix</div>
+            <div class="section-desc">Chapter 26–28 · 행성 궤도, 타원/쌍곡선, 궤도 계산의 부록</div>
+          </div>
+          <div class="section-arrow">›</div>
+        </button>
+
+        <div class="section-content">
+          <div class="section-video-box">
+            <div class="video-placeholder">
+              Part V 대표 영상 자리
+            </div>
+            <p>행성 궤도와 관련된 부록 내용을 묶어 보여주는 영상 자리.</p>
+          </div>
+
+          <div class="lecture-list">
+            <a class="lecture-item" href="#">
+              <div class="lecture-no">Lecture 26–28</div>
+              <h3>Energy of Planet Orbits, Elliptic and Hyperbolic Orbits, Calculus for Planet Orbits</h3>
+              <p>부록의 핵심 내용을 요약하고 앞선 내용과 연결한다.</p>
+              <div class="lecture-meta">영상 준비 중</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.section-toggle').forEach(button => {
+      button.addEventListener('click', function () {
+        const section = this.parentElement;
+        section.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html> 
