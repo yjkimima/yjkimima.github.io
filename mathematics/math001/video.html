@@ -321,6 +321,42 @@
         padding: 16px;
       }
     }
+
+.clip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.clip-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.embedded-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #dbe3ea;
+  background: #f8fafc;
+}
+
+.embedded-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.lecture-meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+}
   </style>
 </head>
 <body>
@@ -379,20 +415,52 @@
 
           <div class="lecture-list">
 <a class="lecture-item" href="javascript:void(0);">
+<div class="lecture-item">
   <div class="lecture-no">Section 1</div>
   <h3>Limit and Continuity #1 (with Common Language)</h3>
   <p>Common language definitions와 ε–δ 논의를 준비하는 첫 강의.</p>
-  <div class="lecture-meta">Lecture 1–2</div>
 
-  <div class="embedded-video">
-    <iframe
-      src="https://www.youtube.com/embed/RboSescpMbU"
-      title="Limit and Continuity #1"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+  <div class="clip-grid">
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.1</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #1"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.2</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #2"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="clip-card">
+      <div class="lecture-meta">Lecture 1.3</div>
+      <div class="embedded-video">
+        <iframe
+          src="https://www.youtube.com/embed/RboSescpMbU"
+          title="Limit and Continuity #3"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
   </div>
+</div>
 </a>
 
             <a class="lecture-item" href="#">
