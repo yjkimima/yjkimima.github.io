@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lecture-Structured Textbook | A Proposal to Future Authors</title>
+  <title>출판하기 | 25 Lectures</title>
   <style>
     :root {
       --bg: #f6f7fb;
@@ -13,13 +13,11 @@
       --line: #e5e7eb;
       --accent: #1d4ed8;
       --accent-soft: #dbeafe;
-      --accent-2: #0f766e;
       --quote: #f8fafc;
       --shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
       --radius: 18px;
       --max: 1080px;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -29,28 +27,16 @@
       color: var(--ink);
       line-height: 1.75;
     }
+    a { color: inherit; text-decoration: none; }
 
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    header {
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #e8e8e8;
     }
-
     .nav-wrap {
       max-width: 1280px;
       margin: 0 auto;
@@ -60,23 +46,11 @@
       align-items: center;
       gap: 20px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      white-space: nowrap;
-    }
-
     .brand img {
-      width: auto;
       height: 44px;
-      object-fit: contain;
+      width: auto;
+      display: block;
     }
-
     .nav {
       display: flex;
       flex-wrap: wrap;
@@ -85,29 +59,27 @@
       color: #555;
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
-
-    .nav a:hover,
+    .nav a:hover { color: #000; }
     .nav a.active {
       color: #000;
       font-weight: 700;
+      border-bottom: 2px solid #000;
+      padding-bottom: 2px;
     }
-
 
     .wrap {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 20px 80px;
+      padding: 36px 20px 80px;
     }
-
     .hero {
       background: linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #ecfeff 100%);
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 54px 42px;
       box-shadow: var(--shadow);
-      margin-top: 18px;
+      margin-top: 0;
     }
-
     .eyebrow {
       display: inline-block;
       padding: 6px 12px;
@@ -120,49 +92,39 @@
       font-family: Arial, Helvetica, sans-serif;
       font-weight: 700;
     }
-
     h1, h2, h3 {
       line-height: 1.2;
       margin: 0 0 16px;
       color: #111827;
     }
-
     h1 {
       font-size: clamp(2.1rem, 4vw, 3.7rem);
       margin-bottom: 18px;
     }
-
     h2 {
       font-size: clamp(1.55rem, 2.6vw, 2.2rem);
       margin-top: 46px;
       padding-top: 8px;
     }
-
     h3 {
       font-size: 1.2rem;
       margin-top: 26px;
     }
-
     p {
       margin: 0 0 16px;
       font-size: 1.07rem;
     }
-
     .lead {
       font-size: 1.22rem;
       color: #1f2937;
       max-width: 900px;
     }
-
-    .muted { color: var(--muted); }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
       margin: 28px 0;
     }
-
     .card {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -170,11 +132,7 @@
       padding: 24px 24px 20px;
       box-shadow: var(--shadow);
     }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
+    .card h3 { margin-top: 0; }
     .quote {
       background: var(--quote);
       border-left: 5px solid var(--accent);
@@ -183,7 +141,6 @@
       margin: 24px 0;
       font-size: 1.15rem;
     }
-
     .statement {
       background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid var(--line);
@@ -192,11 +149,7 @@
       box-shadow: var(--shadow);
       margin: 28px 0;
     }
-
-    .statement strong {
-      color: var(--accent);
-    }
-
+    .statement strong { color: var(--accent); }
     .compare {
       width: 100%;
       border-collapse: collapse;
@@ -207,7 +160,6 @@
       overflow: hidden;
       border: 1px solid var(--line);
     }
-
     .compare th,
     .compare td {
       border-bottom: 1px solid var(--line);
@@ -215,40 +167,18 @@
       vertical-align: top;
       text-align: left;
     }
-
     .compare th {
       background: #f8fafc;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.95rem;
     }
-
     .compare tr:last-child td { border-bottom: none; }
-
-    .pillrow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0 24px;
-    }
-
-    .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #3730a3;
-      font-size: 0.94rem;
-      font-family: Arial, Helvetica, sans-serif;
-      border: 1px solid #c7d2fe;
-      font-weight: 600;
-    }
-
     .lecture-map {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin: 24px 0;
     }
-
     .lecture-box {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -256,7 +186,6 @@
       padding: 18px;
       box-shadow: var(--shadow);
     }
-
     .lecture-box .num {
       display: inline-block;
       min-width: 36px;
@@ -269,7 +198,6 @@
       font-weight: 800;
       margin-bottom: 12px;
     }
-
     .flow {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -282,15 +210,12 @@
       overflow-x: auto;
       margin: 24px 0;
     }
-
     ul {
       padding-left: 22px;
       margin-top: 8px;
       margin-bottom: 16px;
     }
-
     li { margin-bottom: 8px; }
-
     .cta {
       margin-top: 42px;
       padding: 30px;
@@ -299,39 +224,41 @@
       border: 1px solid #bfdbfe;
       box-shadow: var(--shadow);
     }
-
-    .footer {
-      margin-top: 44px;
-      color: var(--muted);
-      font-size: 0.96rem;
-      text-align: center;
+    footer {
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+      margin-top: 24px;
     }
-
-    @media (max-width: 960px) {
-      .nav-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 36px;
+      color: #777;
+      font-size: 14px;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
-
     @media (max-width: 860px) {
       .grid,
       .lecture-map {
         grid-template-columns: 1fr;
       }
-
       .hero {
         padding: 36px 24px;
       }
-
       .wrap {
-        padding: 16px 14px 60px;
+        padding: 24px 14px 60px;
+      }
+    }
+    @media (max-width: 680px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="nav-wrap">
       <div class="brand">
         <a href="index.html"><img src="assets/images/dotcomlogo.png" alt="25 Lectures 로고"></a>
@@ -344,32 +271,29 @@
         <a href="underconstruction.html">대학생물</a>
         <a href="underconstruction.html">대학화학</a>
         <a href="underconstruction.html">강의자료</a>
-        <a href="underconstruction.html">강의영상</a>
+        <a href="lectures.html">강의영상</a>
         <a href="publish.html" class="active">출판하기</a>
       </nav>
     </div>
   </header>
 
   <div class="wrap">
-    <section class="hero">
-      <div class="eyebrow">25lectures.com • Author Manifesto Draft</div>
+    <section>
       <h2>Why We Need a <em>Lecture-Structured Textbook</em></h2>
-      <p class="lead">We are not simply asking authors to write another textbook. We are asking them to write a book whose internal structure already follows the structure of teaching. In such a book, the lecture is not an afterthought. The lecture is the basic unit.</p>
-      <p class="lead">This is the central idea: <strong>a textbook should not merely contain knowledge; it should embody the order in which that knowledge can be taught, explained, recorded, and learned.</strong></p>
-      <div class="pillrow">
-        <span class="pill">Lecture-Structured Textbook</span>
-        <span class="pill">Book = Lecture Sequence</span>
-        <span class="pill">Video Clips from the Same Table of Contents</span>
-        <span class="pill">Teaching-Centered Design</span>
+      <div class="card">
+        <p class="lead">We are not asking authors to write a <b>better book</b>. We are asking them to write a <b>different textbook</b> whose internal structure already follows the structure of teaching. In such a book, the lecture is not an afterthought. The lecture is the purpose.</p>
+        <p class="lead">This is the central idea: <strong>a textbook should not merely contain knowledge; it should embody the order in which that knowledge can be taught, explained, recorded, and learned.</strong> Then, there are lots of things we can do with the textbook.</p>
       </div>
     </section>
 
     <section>
       <h2>1. What do we mean by a lecture-structured textbook?</h2>
-      <p>Many books are based on lectures. That is not new. A great number of classical texts grew out of lectures, courses, or notes. But that is not yet the same as a <em>lecture-structured textbook</em>. A book can arise from lectures and still fail to provide a clear lecture-by-lecture structure for future teaching.</p>
-      <p>What we propose is more explicit. We want a book in which the author decides, from the beginning, that the basic organizing unit is not the chapter in the abstract, but the lecture in practice. Each unit should correspond to a real teaching session or a clearly defined part of one. The order of exposition should already reflect the order of explanation.</p>
-      <div class="quote">A lecture-structured textbook is a textbook in which each unit is written as a teachable lecture unit, and the entire book follows the sequence of lectures.</div>
-      <p>Sometimes we may also call this a <strong>time-structured textbook</strong>, especially when we want to emphasize that the design takes into account the actual teaching length of a class period, such as 50 minutes, 75 minutes, or any standard format used by the instructor.</p>
+      <div class="card">
+        <p>A great number of classical texts grew out of lectures, courses, or notes. But that is not yet the same as a <em>lecture-structured textbook</em>. These books may arise from lectures and still fail to provide a clear lecture-by-lecture structure for future teaching.</p>
+        <p>What we propose is more explicit. We want a book in which the author decides, from the beginning, that the basic organizing unit is not the chapter in the abstract, but the lecture in practice. Each unit should correspond to a real teaching session or a clearly defined part of one. The order of exposition should already reflect the order of explanation.</p>
+        <div class="quote">A lecture-structured textbook is a textbook in which each unit is written as a teachable lecture unit, and the entire book follows the sequence of lectures.</div>
+        <p>We also call this a <strong>time-structured textbook</strong>, especially when we want to emphasize that the design takes into account the actual teaching length of a class period, 75 minutes.</p>
+      </div>
     </section>
 
     <section>
@@ -391,32 +315,14 @@
       <h2>3. Traditional textbook vs. lecture-structured textbook</h2>
       <table class="compare">
         <thead>
-          <tr>
-            <th>Traditional textbook</th>
-            <th>Lecture-structured textbook</th>
-          </tr>
+          <tr><th>Traditional textbook</th><th>Lecture-structured textbook</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Organized mainly by topic and chapter logic</td>
-            <td>Organized by the sequence of teachable lectures</td>
-          </tr>
-          <tr>
-            <td>The instructor must convert the text into a lecture plan</td>
-            <td>The lecture plan is already embedded in the text</td>
-          </tr>
-          <tr>
-            <td>Examples and exercises may be detached from classroom rhythm</td>
-            <td>Examples and exercises appear where the lecture naturally needs them</td>
-          </tr>
-          <tr>
-            <td>Video production requires a separate content map</td>
-            <td>The table of contents can be used directly for recording and editing clips</td>
-          </tr>
-          <tr>
-            <td>Book, lecture, and website often diverge</td>
-            <td>Book, lecture, clip, and website can share one structure</td>
-          </tr>
+          <tr><td>Organized mainly by topic and chapter logic</td><td>Organized by the sequence of teachable lectures</td></tr>
+          <tr><td>The instructor must convert the text into a lecture plan</td><td>The lecture plan is already embedded in the text</td></tr>
+          <tr><td>Examples and exercises may be detached from classroom rhythm</td><td>Examples and exercises appear where the lecture naturally needs them</td></tr>
+          <tr><td>Video production requires a separate content map</td><td>The table of contents can be used directly for recording and editing clips</td></tr>
+          <tr><td>Book, lecture, and website often diverge</td><td>Book, lecture, clip, and website can share one structure</td></tr>
         </tbody>
       </table>
       <div class="statement"><strong>Traditional textbooks follow the structure of the subject.</strong> A lecture-structured textbook follows the structure of teaching and learning without abandoning intellectual rigor.</div>
@@ -426,15 +332,15 @@
       <h2>4. The practical advantage: one structure for book, lecture, video, and website</h2>
       <p>This is where the idea becomes especially powerful. If the book is organized lecture by lecture, then the same contents list can govern the whole educational ecosystem.</p>
       <div class="flow">Book table of contents
-    ↓
+↓
 Lecture schedule
-    ↓
+↓
 Board recording plan
-    ↓
+↓
 Clip segmentation
-    ↓
+↓
 Course web pages
-    ↓
+↓
 Student review path</div>
       <p>Instead of inventing a new map every time the medium changes, we retain one map. The author writes once, teaches once, records once, and then reuses the same structure everywhere. This reduces friction and preserves coherence.</p>
       <div class="grid">
@@ -453,36 +359,12 @@ Student review path</div>
       <h2>5. What does a lecture unit look like?</h2>
       <p>A lecture unit does not need to be rigid, but it should be teachable. It should feel like a real lesson rather than a neutral container of information. It may include some of the following elements, in varying proportions depending on the discipline and the author’s style.</p>
       <div class="lecture-map">
-        <div class="lecture-box">
-          <div class="num">Step 1</div>
-          <h3>Motivation</h3>
-          <p>Why does this idea matter? What problem or question leads naturally to it?</p>
-        </div>
-        <div class="lecture-box">
-          <div class="num">Step 2</div>
-          <h3>Core idea</h3>
-          <p>What is the central intuition or conceptual move that students must grasp first?</p>
-        </div>
-        <div class="lecture-box">
-          <div class="num">Step 3</div>
-          <h3>Definition or framework</h3>
-          <p>Where does the formal language appear, and how is it motivated by what came before?</p>
-        </div>
-        <div class="lecture-box">
-          <div class="num">Step 4</div>
-          <h3>Worked example</h3>
-          <p>What is the first example that reveals the usefulness or necessity of the concept?</p>
-        </div>
-        <div class="lecture-box">
-          <div class="num">Step 5</div>
-          <h3>Theorem, principle, or method</h3>
-          <p>What is the main result or method of this lecture, and how much proof belongs here?</p>
-        </div>
-        <div class="lecture-box">
-          <div class="num">Step 6</div>
-          <h3>Summary and practice</h3>
-          <p>What should the student retain, and what exercise naturally follows from the lecture?</p>
-        </div>
+        <div class="lecture-box"><div class="num">Step 1</div><h3>Motivation</h3><p>Why does this idea matter? What problem or question leads naturally to it?</p></div>
+        <div class="lecture-box"><div class="num">Step 2</div><h3>Core idea</h3><p>What is the central intuition or conceptual move that students must grasp first?</p></div>
+        <div class="lecture-box"><div class="num">Step 3</div><h3>Definition or framework</h3><p>Where does the formal language appear, and how is it motivated by what came before?</p></div>
+        <div class="lecture-box"><div class="num">Step 4</div><h3>Worked example</h3><p>What is the first example that reveals the usefulness or necessity of the concept?</p></div>
+        <div class="lecture-box"><div class="num">Step 5</div><h3>Theorem, principle, or method</h3><p>What is the main result or method of this lecture, and how much proof belongs here?</p></div>
+        <div class="lecture-box"><div class="num">Step 6</div><h3>Summary and practice</h3><p>What should the student retain, and what exercise naturally follows from the lecture?</p></div>
       </div>
       <p>Not every unit needs every component. The point is not uniformity, but teachability. The question is always: <em>can this unit be taught clearly as one lecture?</em></p>
     </section>
@@ -526,9 +408,7 @@ Student review path</div>
 
     <section>
       <h2>9. A possible declaration</h2>
-      <div class="quote">
-        We believe that a textbook should not only present knowledge. It should present a teachable order of knowledge. We call such a book a <strong>lecture-structured textbook</strong>. In some contexts, especially when the teaching length is emphasized, we may also call it a <strong>time-structured textbook</strong>. Our goal is to encourage authors to design books whose structure can be shared directly by lectures, videos, course pages, and students’ review paths.
-      </div>
+      <div class="quote">We believe that a textbook should not only present knowledge. It should present a teachable order of knowledge. We call such a book a <strong>lecture-structured textbook</strong>. In some contexts, especially when the teaching length is emphasized, we may also call it a <strong>time-structured textbook</strong>. Our goal is to encourage authors to design books whose structure can be shared directly by lectures, videos, course pages, and students’ review paths.</div>
     </section>
 
     <section>
@@ -546,8 +426,10 @@ Student review path</div>
       <p>If you are an author or instructor, we invite you to consider a simple but demanding question: not only “What should be in this book?” but also “In what order should this material be taught, and can that order become the structure of the book itself?”</p>
       <p>If the answer is yes, then the book is no longer only a repository of knowledge. It becomes the architecture of a living course.</p>
     </section>
-
-    <p class="footer">Draft prepared for revision. This file is intended as a working manifesto for future authors of lecture-structured textbooks.</p>
   </div>
+
+  <footer>
+    <div class="footer-inner">© 2026 25 Lectures Series. All rights reserved.</div>
+  </footer>
 </body>
-</html> 
+</html>
