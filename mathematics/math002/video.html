@@ -683,7 +683,8 @@
       `;
     }
 
-    document.getElementById('catalog').innerHTML = catalog.map(createPart).join('');
+const catalogWithLinks = applyVideoLinks(catalog, VIDEO_LINKS);
+document.getElementById('catalog').innerHTML = catalogWithLinks.map(createPart).join('');
 
     document.querySelectorAll('.part-toggle').forEach(btn => {
       btn.addEventListener('click', function () {
