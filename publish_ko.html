@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>출판하기 | 25 Lectures</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background: #f6f7fb;
+      color: #1f2937;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== HOME HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8e8e8;
+    }
+.nav a.active {
+  color: #000;
+  font-weight: 700;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+    .nav-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand img {
+      height: 44px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .nav a:hover {
+      color: #000;
+    }
+
+    /* ===== PUBLISH PAGE ===== */
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #ecfeff 100%);
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      padding: 50px 40px;
+      margin-bottom: 40px;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    h1 { font-size: 42px; }
+    h2 { margin-top: 40px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .quote {
+      background: #f8fafc;
+      border-left: 5px solid #1d4ed8;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 36px;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER (HOME과 동일) ===== -->
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <a href="index.html">
+        <img src="assets/images/dotcomlogo.png" alt="25 Lectures 로고">
+      </a>
+    </div>
+    <nav class="nav">
+        <a href="introduction.html">소개</a>
+        <a href="mathematics/index.html">대학수학</a>
+        <a href="statistics/index.html">대학통계</a>
+        <a href="physics/index.html">대학물리</a>
+        <a href="biology/index.html">대학생물</a>
+        <a href="chemistry/index.html">대학화학</a>
+        <a href="materials.html">강의자료</a>
+        <a href="videos.html">강의영상</a>
+        <a href="publish_ko.html"  class="active">출판하기</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="wrap">
+
+  <section class="hero">
+    <h1>강의 구조 교재 (Lecture-Structured Textbook)</h1>
+    <p>
+      우리는 단순히 또 하나의 교재를 쓰는 것이 아니라,
+      책의 구조 자체가 강의 구조를 따르도록 설계된 교재를 만들고자 한다.
+      이러한 교재에서는 강의가 부차적인 것이 아니라 기본 단위가 된다.
+    </p>
+    <div class="quote">
+      교재는 단지 지식을 담는 책이 아니라,
+      그 지식이 어떻게 가르쳐지고 설명되고 학습될 수 있는지의 순서를 담아야 한다.
+    </div>
+  </section>
+
+  <section>
+    <h2>강의 구조 교재란 무엇인가</h2>
+    <p>
+      많은 교재들이 강의를 바탕으로 만들어지지만,
+      강의 단위 구조가 명확하게 반영된 교재는 많지 않다.
+      우리가 제안하는 교재는 책의 기본 단위를 chapter가 아니라 lecture로 두는 것이다.
+    </p>
+  </section>
+
+  <section>
+    <h2>왜 필요한가</h2>
+    <div class="card">
+      <p>
+        현재 대학 교육에서는 교재, 강의, 슬라이드, 과제, 영상, 웹사이트가 모두
+        서로 다른 구조를 가지고 있다. 교수는 매 학기 교재 위에 새로운 강의 구조를
+        다시 만들어야 한다.
+      </p>
+      <p>
+        강의 구조 교재는 이러한 구조를 책 안에 포함시켜
+        책, 강의, 영상, 웹사이트가 하나의 구조를 공유하도록 한다.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>하나의 구조</h2>
+    <div class="card">
+      책의 목차 → 강의 일정 → 판서 강의 → 영상 클립 → 강의 웹페이지 → 학생 복습
+    </div>
+  </section>
+
+  <section>
+    <h2>저자에게</h2>
+    <div class="card">
+      <ul>
+        <li>책을 쓰면서 강의 구조가 명확해진다.</li>
+        <li>강의가 쉬워진다.</li>
+        <li>영상 제작이 쉬워진다.</li>
+        <li>다른 교수들이 바로 사용할 수 있다.</li>
+        <li>학생들이 강의 단위로 복습할 수 있다.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    © 2026 25 Lectures Series. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html> 
